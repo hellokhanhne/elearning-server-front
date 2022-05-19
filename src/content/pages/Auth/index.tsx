@@ -24,6 +24,7 @@ export default function Auth() {
 
   const { isAuthenticated, isLoading } = useAppSelector(authSelector);
   const responseGoogle = (response: GoogleLoginResponse) => {
+    console.log(response);
     if (response.tokenId) {
       dispatch(setAuthLoading(true));
       dispatch(login(response.tokenId));
