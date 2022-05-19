@@ -39,10 +39,10 @@ const ButtonSearch = styled(Button)(
 );
 
 function Status404() {
-
   return (
-    <>
+    <div style={{ marginTop: '3rem' }}>
       <Helmet>
+        {/* <div style={{ marginTop: '3rem' }}></div> */}
         <title>Status - 404</title>
       </Helmet>
       <MainContent>
@@ -58,7 +58,8 @@ function Status404() {
               fontWeight="normal"
               sx={{ mb: 4 }}
             >
-              It's on us, we moved the content to a different page. The search below should help!
+              It's on us, we moved the content to a different page. The search
+              below should help!
             </Typography>
           </Box>
           <Container maxWidth="sm">
@@ -89,7 +90,7 @@ function Status404() {
           </Container>
         </Container>
       </MainContent>
-    </>
+    </div>
   );
 }
 

@@ -11,6 +11,7 @@ import NewsManagement from './content/pages/News';
 
 import CreateNews from './content/pages/News/CreateNews';
 import UpdateNews from './content/pages/News/UpdateNews';
+import Status404 from './content/pages/Status/Status404';
 import SidebarLayout from './layouts/SidebarLayout';
 import ProtectedRouter from './router/ProtectedRouter';
 import { useAppDispatch, useAppSelector } from './store/hooks';
@@ -93,6 +94,8 @@ const App = () => {
                   </ProtectedRouter>
                 }
               />
+              {/* not match  */}
+              <Route path="*" element={<Status404 />} />
             </Routes>
           </BrowserRouter>
           ,

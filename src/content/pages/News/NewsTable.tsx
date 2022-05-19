@@ -3,9 +3,13 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import {
   Box,
   Card,
+  CardHeader,
   Checkbox,
   Divider,
+  FormControl,
   IconButton,
+  InputLabel,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -94,8 +98,6 @@ const NewsTable: FC<NewsTableProps> = ({ news }) => {
 
   const paginatedNews = applyPagination(news, page, limit);
 
-  console.log(paginatedNews);
-
   const selectedSomeNews =
     setNewsSelected.length > 0 && newsSelected.length < news.length;
   const selectedAllNews = newsSelected.length === news.length;
@@ -140,7 +142,7 @@ const NewsTable: FC<NewsTableProps> = ({ news }) => {
               <TableCell padding="checkbox">
                 <Checkbox
                   color="primary"
-                  checked={selectedSomeNews}
+                  checked={!selectedSomeNews}
                   indeterminate={selectedAllNews}
                   onChange={handleSelectAllNews}
                 />
@@ -196,7 +198,8 @@ const NewsTable: FC<NewsTableProps> = ({ news }) => {
                       variant="body1"
                       fontWeight="bold"
                       color="text.primary"
-                      gutterBottom                      noWrap
+                      gutterBottom
+                      noWrap
                     >
                       {n.news_title.slice(0, 15) + ' ...'}
                     </Typography>
@@ -270,7 +273,7 @@ const NewsTable: FC<NewsTableProps> = ({ news }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={paginatedNews.length}
+          count={news.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}
