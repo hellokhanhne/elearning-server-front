@@ -107,14 +107,6 @@ function Logo() {
       </LogoSignWrapper>
       <Hidden smDown>
         <LogoTextWrapper>
-          <Tooltip
-            title="Version 1.1.0"
-            arrow
-            placement="right"
-            children={undefined}
-          >
-            <VersionBadge>1.1</VersionBadge>
-          </Tooltip>
           <LogoText>Tokyo Free White</LogoText>
         </LogoTextWrapper>
       </Hidden>
