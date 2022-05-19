@@ -45,22 +45,17 @@ function BottomBarContent() {
           placeholder="Write here your message..."
         />
       </Box>
-      <Tooltip
-        arrow
-        placement="top"
-        title="Choose an emoji"
-        children={undefined}
-      >
-        <IconButton color="primary">😀</IconButton>
-      </Tooltip>
+
+      <IconButton color="primary">😀</IconButton>
+
       <Input accept="image/*" id="messenger-upload-file" type="file" />
-      <Tooltip arrow placement="top" title="Attach a file" children={undefined}>
-        <label htmlFor="messenger-upload-file">
-          <IconButton color="primary" component="span">
-            <AttachFileTwoToneIcon />
-          </IconButton>
-        </label>
-      </Tooltip>
+
+      <label htmlFor="messenger-upload-file">
+        <IconButton color="primary" component="span">
+          <AttachFileTwoToneIcon />
+        </IconButton>
+      </label>
+
       <Hidden mdDown>
         <DividerWrapper orientation="vertical" flexItem />
         <Button startIcon={<SendTwoToneIcon />} variant="contained">
