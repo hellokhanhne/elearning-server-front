@@ -1,12 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import AuthReducer from './reducer/AuthReducer';
 import NewsReducer from './reducer/NewsReducer';
+import StudentReducer from './reducer/StudentReducer';
 
 export function makeStore() {
   return configureStore({
     reducer: {
       auth: AuthReducer,
-      news: NewsReducer
+      news: NewsReducer,
+      student: StudentReducer
     },
     devTools: true
   });

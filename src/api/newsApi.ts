@@ -13,7 +13,7 @@ const newsApi = {
   create(data: FormData) {
     return axiosClient.post('/news', data);
   },
-  update(id: number, data) {
+  update(id: number, data: FormData) {
     return axiosClient.put(`/news/${id}`, data);
   },
   delete(id: number) {

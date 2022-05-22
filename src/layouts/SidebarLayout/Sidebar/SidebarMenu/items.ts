@@ -16,6 +16,7 @@ import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import TrafficTwoToneIcon from '@mui/icons-material/TrafficTwoTone';
 import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone';
 import FeedIcon from '@mui/icons-material/Feed';
+import PersonIcon from '@mui/icons-material/Person';
 
 export interface MenuItem {
   link?: string;
@@ -63,6 +64,11 @@ const menuItems: MenuItems[] = [
         name: 'News management',
         icon: FeedIcon,
         link: '/news'
+      },
+      {
+        name: 'Student management',
+        icon: PersonIcon,
+        link: '/student'
       },
       {
         name: 'User Profile',
