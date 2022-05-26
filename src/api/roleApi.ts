@@ -1,3 +1,4 @@
+import { ICreateRole } from 'src/models/role.interface';
 import axiosClient from './axiosClient';
 
 const roleApi = {
@@ -8,11 +9,19 @@ const roleApi = {
   getOne(id: number) {
     return axiosClient.get(`/role/${id}`);
   },
-  create(data) {
+  create(data: ICreateRole) {
     return axiosClient.post('/role', data);
   },
-  update(id: number, data) {
+  update(id: number, data: ICreateRole) {
     return axiosClient.put(`/role/${id}`, data);
+  },
+  updatePermission(
+    id: number,
+    data: {
+      permissionIds: string[];
+    }
+  ) {
+    return axiosClient.patch(`/role/${id}`, data);
   },
   delete(id: number) {
     return axiosClient.delete(`/role/${id}`);

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import studentApi from 'src/api/studentApi';
 import { Student } from 'src/models/student.interface';
+import { alertError } from 'src/utils/alertError';
 import { AppState } from '../store';
 
 interface IInitState {
@@ -12,9 +13,16 @@ const initialState: IInitState = {
 };
 
 const getAllStudents = createAsyncThunk('student/getall', async () => {
-  const res = await studentApi.getAll();
-  const { data } = res.data;
-  return data;
+  try {
+    const res = await studentApi.getAll();
+    const { data } = res.data;
+    return data;
+  } catch (error) {
+    setTimeout(() => {
+      alertError(error);
+    }, 3000);
+    throw new Error(error);
+  }
 });
 
 // const getOneStudent = createAsyncThunk('student/getone', async (id: number) => {
@@ -37,6 +45,7 @@ const createStudent = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+      alertError(error);
       throw new Error(error);
     }
   }

@@ -2,7 +2,11 @@ import axiosClient from './axiosClient';
 
 const newsApi = {
   getAll() {
-    return axiosClient.get('/news');
+    return axiosClient.get('/news', {
+      params: {
+        page: -1
+      }
+    });
   },
   getAllCategory() {
     return axiosClient.get('news-category');

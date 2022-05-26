@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import newsApi from 'src/api/newsApi';
 import { INews } from 'src/models/news.interface';
+import { alertError } from 'src/utils/alertError';
 import Swal from 'sweetalert2';
 import { AppState } from '../store';
 
@@ -11,19 +12,30 @@ interface IUpdateNews {
 
 interface IInitState {
   news: INews[];
+  error: {
+    message: string;
+  };
 }
 
 const initialState: IInitState = {
-  news: []
+  news: [],
+  error: {
+    message: null
+  }
 };
 
 const getNews = createAsyncThunk('news/getNews', async () => {
   try {
     const res = await newsApi.getAll();
     const { data } = res.data;
+    // console.log(data);
     return data;
   } catch (error) {
+    setTimeout(() => {
+      alertError(error);
+    }, 3000);
     console.log(error);
+    throw new Error(error);
   }
 });
 
@@ -36,6 +48,9 @@ const createNews = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+
+      alertError(error);
+      throw new Error(error);
     }
   }
 );
@@ -49,6 +64,8 @@ const updateNews = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+      alertError(error);
+      throw new Error(error);
     }
   }
 );
@@ -60,6 +77,8 @@ const deleteNews = createAsyncThunk('news/delete', async (id: number) => {
     return id;
   } catch (error) {
     console.log(error);
+    alertError(error);
+    throw new Error(error);
   }
 });
 
@@ -71,6 +90,7 @@ const newsSlice = createSlice({
     builder.addCase(getNews.fulfilled, (state, action) => {
       state.news = action.payload;
     });
+
     builder.addCase(createNews.fulfilled, (state, action) => {
       // state.news.push(action.payload);
     });

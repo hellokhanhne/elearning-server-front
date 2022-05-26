@@ -1,7 +1,10 @@
-interface IRole {
-  role_id: number;
+interface ICreateRole {
   role_title: string;
   role_desc: string;
 }
 
-export type { IRole };
+interface IRole extends ICreateRole {
+  role_id: number;
+}
+
+export type { IRole, ICreateRole };

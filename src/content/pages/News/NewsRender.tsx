@@ -6,6 +6,8 @@ import NewsTable from './NewsTable';
 
 function NewsRender() {
   const { news } = useAppSelector(newsSelector);
+
+  console.log(news);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getNews());

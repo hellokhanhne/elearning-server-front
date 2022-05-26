@@ -5,11 +5,16 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import Loading from './components/Loading/Loading';
+import ApplicationsMessenger from './content/applications/Messenger';
 import DashboardCrypto from './content/dashboards/Crypto';
 import Auth from './content/pages/Auth';
 import NewsManagement from './content/pages/News';
 import CreateNews from './content/pages/News/CreateNews';
 import UpdateNews from './content/pages/News/UpdateNews';
+import RoleManagement from './content/pages/Roles';
+import CreateRole from './content/pages/Roles/CreateRole';
+import UpdateRole from './content/pages/Roles/UpdateRole';
+import UpdateRolePermission from './content/pages/Roles/UpdateRolePermission';
 import Status404 from './content/pages/Status/Status404';
 import StudentManagement from './content/pages/Students';
 import CreateStudent from './content/pages/Students/CreateStudent';
@@ -43,19 +48,18 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      const socket = io('http://localhost:5000');
-
-      socket.on('connect', () => {
-        socket.emit('sendmess', 'hello khanh ne');
-      });
-      socket.on('receive', (data: any) => {
-        console.log('socket', data);
-      });
-      return () => {
-        socket.close();
-      };
-    }
+    // if (isAuthenticated) {
+    //   const socket = io('http://localhost:5000');
+    //   socket.on('connect', () => {
+    //     socket.emit('sendmess', 'hello khanh ne');
+    //   });
+    //   socket.on('receive', (data: any) => {
+    //     console.log('socket', data);
+    //   });
+    //   return () => {
+    //     socket.close();
+    //   };
+    // }
   }, []);
 
   return (
@@ -110,7 +114,7 @@ const App = () => {
                 element={
                   <ProtectedRouter
                     isAllowed={isAuthenticated}
-                    redirectPath="/news/update/:id"
+                    redirectPath="/news"
                   >
                     <UpdateNews />
                   </ProtectedRouter>
@@ -144,9 +148,70 @@ const App = () => {
                 element={
                   <ProtectedRouter
                     isAllowed={isAuthenticated}
-                    redirectPath="/student/update/:id"
+                    redirectPath="/student"
                   >
                     <UpdateStudent />
+                  </ProtectedRouter>
+                }
+              />
+              {/* role  */}
+              <Route
+                path="/role"
+                element={
+                  <ProtectedRouter
+                    isAllowed={isAuthenticated}
+                    redirectPath="/role"
+                  >
+                    <RoleManagement />
+                  </ProtectedRouter>
+                }
+              />
+
+              <Route
+                path="/role/create"
+                element={
+                  <ProtectedRouter
+                    isAllowed={isAuthenticated}
+                    redirectPath="/role/create"
+                  >
+                    <CreateRole />
+                  </ProtectedRouter>
+                }
+              />
+
+              <Route
+                path="/role/update/permission/:id"
+                element={
+                  <ProtectedRouter
+                    isAllowed={isAuthenticated}
+                    redirectPath="/role"
+                  >
+                    <UpdateRolePermission />
+                  </ProtectedRouter>
+                }
+              />
+
+              <Route
+                path="/role/update/:id"
+                element={
+                  <ProtectedRouter
+                    isAllowed={isAuthenticated}
+                    redirectPath="/role"
+                  >
+                    <UpdateRole />
+                  </ProtectedRouter>
+                }
+              />
+
+              {/* message  */}
+              <Route
+                path="/messenger"
+                element={
+                  <ProtectedRouter
+                    isAllowed={isAuthenticated}
+                    redirectPath="/messenger"
+                  >
+                    <ApplicationsMessenger />
                   </ProtectedRouter>
                 }
               />

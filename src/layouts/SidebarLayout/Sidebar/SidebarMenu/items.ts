@@ -17,6 +17,7 @@ import TrafficTwoToneIcon from '@mui/icons-material/TrafficTwoTone';
 import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone';
 import FeedIcon from '@mui/icons-material/Feed';
 import PersonIcon from '@mui/icons-material/Person';
+import { Security } from '@mui/icons-material';
 
 export interface MenuItem {
   link?: string;
@@ -69,6 +70,11 @@ const menuItems: MenuItems[] = [
         name: 'Student management',
         icon: PersonIcon,
         link: '/student'
+      },
+      {
+        name: 'Role management',
+        icon: Security,
+        link: '/role'
       },
       {
         name: 'User Profile',
