@@ -20,6 +20,7 @@ export const login = createAsyncThunk('auth/login', async (tokenId: string) => {
     const response = await authApi.login(tokenId);
     localStorage.setItem('access_token', response.data.data.access_token);
     localStorage.setItem('refresh_token', response.data.data.refresh_token);
+    setToken(response.data.data.access_token);
     return response.data;
   } catch (error) {
     console.error(error);
