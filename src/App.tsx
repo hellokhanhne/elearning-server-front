@@ -40,6 +40,7 @@ const App = () => {
       setToken(access_token);
       return dispatch(loadUser());
     }
+
     return dispatch(setAuthLoading(false));
   };
 

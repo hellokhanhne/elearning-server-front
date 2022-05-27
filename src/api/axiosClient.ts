@@ -1,6 +1,6 @@
 import axios from 'axios';
-export const BASE_URL = 'http://localhost:5000/api';
-export const BASE_URL_IMAGE = 'http://localhost:5000/images';
+export const BASE_URL = 'https://nguyenngockhanh.xyz/api';
+export const BASE_URL_IMAGE = 'https://nguyenngockhanh.xyz/images';
 
 const axiosClient = axios.create({
   baseURL: BASE_URL,

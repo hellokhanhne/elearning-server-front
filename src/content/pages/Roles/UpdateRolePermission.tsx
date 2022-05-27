@@ -13,6 +13,14 @@ import { alertError } from 'src/utils/alertError';
 import Swal from 'sweetalert2';
 import { IPermission } from '../../../models/permission.interface';
 
+const colors = {
+  POST: '#49cc90',
+  GET: '#61affe',
+  PUT: '#fca130',
+  PATCH: '#50e3c2',
+  DELETE: '#f93e3e'
+};
+
 const UpdateRolePermission = () => {
   let { id } = useParams();
   const [role, setRole] = useState<IRole>(null);
@@ -91,7 +99,26 @@ const UpdateRolePermission = () => {
                 onChange={() => handleOnchange(p.permission_id.toString())}
               />
             }
-            label={p.permission_url + ` ( Method : ${p.permission_desc} )`}
+            label={
+              <label>
+                {p.permission_url}{' '}
+                <label
+                  style={{
+                    marginLeft: 10
+                  }}
+                >
+                  ( Method :{' '}
+                  <b
+                    style={{
+                      color: colors[p.permission_desc]
+                    }}
+                  >
+                    {p.permission_desc}
+                  </b>{' '}
+                  )
+                </label>
+              </label>
+            }
           />
         ))}
       </FormGroup>

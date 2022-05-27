@@ -4,7 +4,7 @@ import { setToken } from 'src/utils/setToken';
 import { AppState } from '../store';
 
 interface IInitState {
-  user: Object;
+  user: any;
   isAuthenticated: boolean;
   isLoading: boolean;
 }
